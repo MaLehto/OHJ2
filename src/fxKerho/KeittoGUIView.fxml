@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.ComboBoxChooser?>
+<?import fi.jyu.mit.fxgui.ListChooser?>
+<?import fi.jyu.mit.fxgui.RadioButtonChooser?>
+<?import fi.jyu.mit.fxgui.StringGrid?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxKerho.KeittoGUIController">
+   <bottom>
+      <HBox spacing="10.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <Button onAction="#handleUusi" text="_Uusi" />
+            <Button mnemonicParsing="false" onAction="#handlePoista" text="Poista">
+               <HBox.margin>
+                  <Insets right="100.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleAinekset" text="Avaa ainekset uuteen ikkunaan..." />
+            <Button layoutX="118.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleReseptit" text="Avaa reseptit uuteen ikkunaan..." />
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Tiedosto">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleTallenna" text="Tallenna" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleAvaa" text="Avaa" />
+              <MenuItem mnemonicParsing="false" onAction="#handleLopeta" text="Sulje" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleTulosta" text="Tulosta..." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Muokkaa">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handlePoista" text="Poista..." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua...">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleTietoja" text="Tietoja" />
+            </items>
+          </Menu>
+        </menus>
+         <BorderPane.margin>
+            <Insets left="-10.0" right="-10.0" />
+         </BorderPane.margin>
+      </MenuBar>
+   </top>
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <BorderPane maxHeight="40.0" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <left>
+                        <TextField id="hakuehto" fx:id="hakuEhto" onAction="#handleHakuehto" text="Hae..." BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets left="10.0" top="10.0" />
+                           </BorderPane.margin>
+                        </TextField>
+                     </left>
+                     <right>
+                        <Button mnemonicParsing="false" onAction="#handleHaku" text="Haku" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets right="10.0" top="10.0" />
+                           </BorderPane.margin>
+                        </Button>
+                     </right>
+                     <bottom>
+                        <ComboBoxChooser fx:id="hakuKategoria" prefWidth="195.0" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+               </top>
+               <bottom>
+                  <BorderPane minHeight="370.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <ListChooser fx:id="chooserReseptit" rivit="Kalakeitto&#10;Kaurapuuro&#10;Makkarasiili&#10;" BorderPane.alignment="CENTER" />
+                     </center>
+                     <top>
+                        <Label text="Reseptit" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
+               </bottom>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </left>
+   <center>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <BorderPane BorderPane.alignment="CENTER">
+               <top>
+                  <Label text="Ainekset" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </BorderPane.margin>
+                     <content>
+                        <StringGrid fx:id="gridAinekset" rivit="määrä | aines&#10;1kg | peruna&#10;6dl | vesi&#10;6 kpl | pippuri&#10; &#10;" />
+                     </content>
+                  </ScrollPane>
+               </center>
+            </BorderPane>
+         </top>
+         <bottom>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Label text="Valmistusohje" BorderPane.alignment="CENTER" />
+               </top>
+               <center>
+                  <ScrollPane fitToWidth="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <content>
+                        <TextArea fx:id="areaOhje" prefHeight="200.0" prefWidth="200.0" />
+                     </content>
+                  </ScrollPane>
+               </center>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </BorderPane>
+         </bottom>
+      </BorderPane>
+   </center>
+   <padding>
+      <Insets left="10.0" right="10.0" />
+   </padding>
+   <right>
+      <RadioButtonChooser fx:id="arvostelu" alignment="CENTER" rivit="1&#10;2&#10;3&#10;4&#10;5&#10;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+         <children>
+            <Button mnemonicParsing="false" onAction="#lisaaAines" text="Lisää aines" />
+            <Button mnemonicParsing="false" onAction="#poistaAines" text="Poista aines" />
+            <Label text="Arvostelu:" />
+         </children>
+      </RadioButtonChooser>
+   </right>
+</BorderPane>

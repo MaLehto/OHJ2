@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import fi.jyu.mit.fxgui.StringGrid?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxKerho.AinesIkkunaController">
+   <children>
+      <BorderPane>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <center>
+            <ScrollPane hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+               <content>
+                  <StringGrid fx:id="gridAinekset" rivit="nimi |maara|mitta-asteikko&#10;" />
+               </content>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
